@@ -1,4 +1,9 @@
-const { createDeck, DECK_DEFINITION, shuffle } = require('deck/deck')
+const {
+  createDeck,
+  DECK_DEFINITION,
+  shuffle,
+  getRandomCard
+} = require('deck/deck')
 
 const DECK_SIZE = 52
 
@@ -37,7 +42,7 @@ describe('deck', () => {
   })
 
   describe('deck manipulation', () => {
-    it('should shuffle deck', () => {
+    describe('deck/shuffle', () => {
       const currentDeck = {
         cards: [
           { value: 'A', suit: 'SPADES' },
@@ -47,9 +52,26 @@ describe('deck', () => {
         ]
       }
 
-      const { cards } = shuffle(currentDeck)
+      it('should return a random card from the deck', () => {
+        const { selectedCard, cards: newCards } = getRandomCard({
+          cards: currentDeck.cards
+        })
 
-      expect(cards).not.toMatchObject(currentDeck.cards)
+        const isSelectedCardOnDeck = newCards.some(card =>
+          card.value === selectedCard.value &&
+          card.suit === selectedCard.suit
+        )
+
+        expect(isSelectedCardOnDeck).toBeFalsy()
+        expect(newCards).not.toStrictEqual(currentDeck.cards)
+        expect(currentDeck.cards.length).not.toEqual(newCards.length)
+        expect(currentDeck.cards.length).not.toEqual(newCards.length)
+      })
+
+      it('should shuffle deck', () => {
+        const { cards } = shuffle(currentDeck)
+        expect(cards).not.toMatchObject(currentDeck.cards)
+      })
     })
   })
 })
