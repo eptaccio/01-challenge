@@ -9,8 +9,24 @@ const DECK_DEFINITION = {
     '10', 'J', 'Q', 'K'
   ]
 }
-const createDeck = () => {
 
+const createDeck = () => {
+  const cards = []
+  const availableSuits = DECK_DEFINITION.suits
+  const availableCardValues = DECK_DEFINITION.values
+
+  for (const suit of availableSuits) {
+    const newCards = availableCardValues.map(value => {
+      return {
+        value,
+        suit
+      }
+    })
+
+    cards.push(...newCards)
+  }
+
+  return { cards }
 }
 
 module.exports = {
