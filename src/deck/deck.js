@@ -61,7 +61,13 @@ const shuffle = ({ cards, newDeck = [] }) => {
 }
 
 const deal = ({ cards }) => {
+  const currentCards = [...cards]
+  const selectedCard = currentCards.shift()
 
+  return {
+    selectedCard,
+    cards: currentCards
+  }
 }
 
 module.exports = {
