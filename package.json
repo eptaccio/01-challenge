@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_PATH=./src jest",
+    "test-dev": "NODE_PATH=./src jest --watch",
     "lint": "standard"
   },
   "keywords": [],
