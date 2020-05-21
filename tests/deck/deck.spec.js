@@ -41,9 +41,9 @@ describe('deck', () => {
       const currentDeck = {
         cards: [
           { value: 'A', suit: 'SPADES' },
-          { value: '2', suit: 'SPADES' },
-          { value: '3', suit: 'SPADES' },
-          { value: '4', suit: 'SPADES' }
+          { value: '2', suit: 'DIAMONDS' },
+          { value: '3', suit: 'CLUBS' },
+          { value: '4', suit: 'HEARTS' }
         ]
       }
 
