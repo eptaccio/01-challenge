@@ -60,9 +60,14 @@ const shuffle = ({ cards, newDeck = [] }) => {
   })
 }
 
+const deal = ({ cards }) => {
+
+}
+
 module.exports = {
   createDeck,
   getRandomCard,
   shuffle,
+  deal,
   DECK_DEFINITION
 }
