@@ -1,4 +1,4 @@
-const { createDeck, DECK_DEFINITION } = require('deck/deck')
+const { createDeck, DECK_DEFINITION, shuffle } = require('deck/deck')
 
 const DECK_SIZE = 52
 
@@ -40,9 +40,16 @@ describe('deck', () => {
     it('should shuffle deck', () => {
       const currentDeck = {
         cards: [
-
+          { value: 'A', suit: 'SPADES' },
+          { value: '2', suit: 'SPADES' },
+          { value: '3', suit: 'SPADES' },
+          { value: '4', suit: 'SPADES' }
         ]
       }
+
+      const { cards } = shuffle(currentDeck)
+
+      expect(cards).not.toMatchObject(currentDeck.cards)
     })
   })
 })
