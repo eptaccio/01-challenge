@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_PATH=./src jest",
     "lint": "standard"
   },
   "keywords": [],
