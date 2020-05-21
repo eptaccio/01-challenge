@@ -21,4 +21,16 @@ describe('deck', () => {
 
     expect(currentSuits).toMatchObject(DECK_DEFINITION.suits)
   })
+
+  it('should create a new deck correct values', () => {
+    const deck = createDeck()
+
+    for (const suit of DECK_DEFINITION.suits) {
+      const currentCards = deck.cards.filter(
+        card => card.suit === suit
+      )
+
+      expect(currentCards.length).toEqual(4)
+    }
+  })
 })
