@@ -30,12 +30,13 @@ const createDeck = () => {
 }
 
 const getRandomCard = ({ cards }) => {
+  const currentCards = [...cards]
   const randomPosition = Math.floor(Math.random() * cards.length)
-  const [selectedCard] = cards.splice(randomPosition, 1)
+  const [selectedCard] = currentCards.splice(randomPosition, 1)
 
   return {
     selectedCard,
-    cards
+    cards: currentCards
   }
 }
 
