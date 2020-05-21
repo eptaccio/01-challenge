@@ -29,7 +29,18 @@ const createDeck = () => {
   return { cards }
 }
 
+const getRandomCard = ({ cards }) => {
+  const randomPosition = Math.floor(Math.random() * cards.length)
+  const [selectedCard] = cards.splice(randomPosition, 1)
+
+  return {
+    selectedCard,
+    cards
+  }
+}
+
 module.exports = {
   createDeck,
+  getRandomCard,
   DECK_DEFINITION
 }
