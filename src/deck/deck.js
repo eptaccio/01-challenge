@@ -40,8 +40,29 @@ const getRandomCard = ({ cards }) => {
   }
 }
 
+const shuffle = ({ cards, newDeck = [] }) => {
+  if (cards.length === 0) {
+    return {
+      cards: newDeck
+    }
+  }
+
+  const {
+    selectedCard,
+    cards: restOfCards
+  } = getRandomCard({ cards })
+
+  newDeck.push(selectedCard)
+
+  return shuffle({
+    cards: restOfCards,
+    newDeck
+  })
+}
+
 module.exports = {
   createDeck,
   getRandomCard,
+  shuffle,
   DECK_DEFINITION
 }
