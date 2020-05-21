@@ -30,7 +30,7 @@ describe('deck', () => {
         card => card.suit === suit
       )
 
-      expect(currentCards.length).toEqual(4)
+      expect(currentCards.length).toEqual(13)
     }
   })
 })
