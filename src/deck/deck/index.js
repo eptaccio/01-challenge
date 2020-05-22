@@ -1,7 +1,7 @@
 const { addToMiddle } = require('./addToMiddle')
-const { getRandomCard } = require('./getRandomCard')
-const { deal } = require('./deal')
 const { createDeck, DECK_DEFINITION } = require('./createDeck')
+const { deal } = require('./deal')
+const { getRandomCard } = require('./getRandomCard')
 
 const {
   shuffle, shuffleOn,
