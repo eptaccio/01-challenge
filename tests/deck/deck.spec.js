@@ -193,6 +193,26 @@ describe('deck', () => {
         expect(currentDeck.cards.length).not.toEqual(cards.length)
         expect(selectedCards.length).toEqual(1)
       })
+
+      it('should deal two cards from the top of the deck', () => {
+        const [expectFirstCard, expectSecondCard] = currentDeck.cards
+
+        const { selectedCards, cards } = deal({
+          cards: currentDeck.cards,
+          quantity: 2
+        })
+
+        const [firstCard, secondCard] = selectedCards
+
+        const isSelectedCardOnDeck = cardIsOnDeck(firstCard, cards) &&
+          cardIsOnDeck(secondCard, cards)
+
+        expect(expectFirstCard).toMatchObject(firstCard)
+        expect(expectSecondCard).toMatchObject(secondCard)
+        expect(isSelectedCardOnDeck).toBeFalsy()
+        expect(currentDeck.cards.length).not.toEqual(cards.length)
+        expect(selectedCards.length).toEqual(2)
+      })
     })
   })
 })
