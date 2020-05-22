@@ -5,6 +5,7 @@ const {
   shuffle,
   shuffleOn,
   deal,
+  addToMiddle,
   getRandomCard
 } = require('deck/deck')
 
@@ -78,12 +79,57 @@ describe('deck', () => {
       })
 
       describe('should shuffle the card into deck', () => {
+        const firstItem = { value: 'A', suit: 'SPADES' }
+        const secondItem = { value: '2', suit: 'DIAMONDS' }
+        const thirdItem = { value: '3', suit: 'CLUBS' }
+
         const newCard = { value: '10', suit: 'HEARTS' }
-        it('shuffle on TOP ', () => {
+
+        describe('deck/shuffle/addToMiddle', () => {
+          it('should add a item to middle of array with two items', () => {
+            const deck = [
+              firstItem,
+              secondItem
+            ]
+
+            const { cards } = addToMiddle({
+              cards: deck,
+              newCard
+            })
+
+            expect(cards).toMatchObject([
+              firstItem,
+              newCard,
+              secondItem
+            ])
+          })
+
+          it('should add a item to middle of array with three items', () => {
+            const deck = [
+              firstItem,
+              secondItem,
+              thirdItem
+            ]
+
+            const { cards } = addToMiddle({
+              cards: deck,
+              newCard
+            })
+
+            expect(cards).toMatchObject([
+              firstItem,
+              secondItem,
+              newCard,
+              thirdItem
+            ])
+          })
+        })
+
+        it('shuffle on TOP', () => {
           const { cards } = shuffleOn({
             newCard,
             cards: currentDeck.cards,
-            position: SHUFFLE_POSITIONS.TOṔ
+            position: SHUFFLE_POSITIONS.TOP
           })
 
           const currentDeckLength = currentDeck.cards.length
