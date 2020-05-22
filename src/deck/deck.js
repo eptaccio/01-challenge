@@ -106,12 +106,17 @@ const shuffleOn = ({ newCard, cards, position }) => {
   }
 }
 
-const deal = ({ cards }) => {
+const deal = ({ cards, quantity = 1 }) => {
   const currentCards = [...cards]
-  const selectedCard = currentCards.shift()
+  const arrayStart = 0
+
+  const selectedCards = currentCards.splice(
+    arrayStart,
+    quantity
+  )
 
   return {
-    selectedCard,
+    selectedCards,
     cards: currentCards
   }
 }

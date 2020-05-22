@@ -183,13 +183,15 @@ describe('deck', () => {
     describe('deck/deal', () => {
       it('should deal from the top of the deck', () => {
         const [cardOnTop] = currentDeck.cards
-        const { selectedCard, cards } = deal(currentDeck)
+        const { selectedCards, cards } = deal(currentDeck)
+        const [selectedCard] = selectedCards
 
         const isSelectedCardOnDeck = cardIsOnDeck(selectedCard, cards)
 
         expect(cardOnTop).toMatchObject(selectedCard)
         expect(isSelectedCardOnDeck).toBeFalsy()
         expect(currentDeck.cards.length).not.toEqual(cards.length)
+        expect(selectedCards.length).toEqual(1)
       })
     })
   })
