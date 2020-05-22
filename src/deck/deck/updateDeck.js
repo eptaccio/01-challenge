@@ -1,7 +1,7 @@
 const { Deck } = require('./model')
 
-const updateDeck = ({ id, data }) =>
-  Deck.findByIdAndUpdate(id, data)
+const updateDeck = ({ _id, cards }) =>
+  Deck.findByIdAndUpdate({ _id }, { cards })
 
 module.exports = {
   updateDeck
