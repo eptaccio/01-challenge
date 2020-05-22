@@ -5,7 +5,9 @@ const saveDeck = async ({ cards }) => {
     cards
   })
 
-  return deck.save()
+  await deck.save()
+
+  return deck
 }
 
 module.exports = {
