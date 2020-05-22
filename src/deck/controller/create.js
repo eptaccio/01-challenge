@@ -16,11 +16,11 @@ const create = async (req, res) => {
 
     const results = await Promise.all(decks.map(saveDeck))
 
-    res.send(results.map(deckResponse))
+    res.status(201).send(results.map(deckResponse))
   } catch (error) {
     logger.error(error)
 
-    res.status(400).send(errorResponse({
+    res.status(500).send(errorResponse({
       message: 'unexpected error on deck creation :('
     }))
   }
