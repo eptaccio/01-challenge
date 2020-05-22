@@ -1,6 +1,9 @@
 const { config } = require('./config')
 const bodyParser = require('body-parser')
 const express = require('express')
+const db = require('./src/db')
+
+db.connect()
 
 const app = express()
 
