@@ -10,6 +10,12 @@ const DECK_DEFINITION = {
   ]
 }
 
+const SHUFFLE_POSITIONS = {
+  TOP: 'TOP',
+  MIDDLE: 'MIDDLE',
+  BOTTOM: 'BOTTOM'
+}
+
 const createDeck = () => {
   const cards = []
   const availableSuits = DECK_DEFINITION.suits
@@ -60,6 +66,10 @@ const shuffle = ({ cards, newDeck = [] }) => {
   })
 }
 
+const shuffleOn = ({ newCard, cards, position }) => {
+
+}
+
 const deal = ({ cards }) => {
   const currentCards = [...cards]
   const selectedCard = currentCards.shift()
@@ -75,5 +85,7 @@ module.exports = {
   getRandomCard,
   shuffle,
   deal,
-  DECK_DEFINITION
+  shuffleOn,
+  DECK_DEFINITION,
+  SHUFFLE_POSITIONS
 }

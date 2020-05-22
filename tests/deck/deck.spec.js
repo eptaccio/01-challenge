@@ -1,7 +1,9 @@
 const {
   createDeck,
   DECK_DEFINITION,
+  SHUFFLE_POSITIONS,
   shuffle,
+  shuffleOn,
   deal,
   getRandomCard
 } = require('deck/deck')
@@ -73,6 +75,23 @@ describe('deck', () => {
       it('should shuffle deck', () => {
         const { cards } = shuffle(currentDeck)
         expect(cards).not.toMatchObject(currentDeck.cards)
+      })
+
+      describe('should shuffle the card into deck', () => {
+        const newCard = { value: '10', suit: 'HEARTS' }
+        it('shuffle on TOP ', () => {
+          const { cards } = shuffleOn({
+            newCard,
+            cards: currentDeck.cards,
+            position: SHUFFLE_POSITIONS.TOṔ
+          })
+
+          const currentDeckLength = currentDeck.cards.length
+          const [firstCard] = cards
+
+          expect(firstCard).toMatchObject(newCard)
+          expect(cards.length).toEqual(currentDeckLength + 1)
+        })
       })
     })
 
