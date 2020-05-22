@@ -1,10 +1,10 @@
 const { config } = require('./config')
-const bodyPaser = require('body-parser')
+const bodyParser = require('body-parser')
 const express = require('express')
 
 const app = express()
 
-app.use(bodyPaser.json())
+app.use(bodyParser.json())
 
 app.get('/status', (_req, res) => res.send('ok'))
 
