@@ -66,8 +66,44 @@ const shuffle = ({ cards, newDeck = [] }) => {
   })
 }
 
-const shuffleOn = ({ newCard, cards, position }) => {
+const addToMiddle = ({ newCard, cards }) => {
+  const currentCards = [...cards]
+  const deckSize = currentCards.length
+  const newItemPosition = Math.round(deckSize / 2)
+  const removeCount = 0
 
+  currentCards.splice(
+    newItemPosition,
+    removeCount,
+    newCard
+  )
+
+  return {
+    cards: currentCards
+  }
+}
+
+const shuffleOn = ({ newCard, cards, position }) => {
+  if (position === SHUFFLE_POSITIONS.TOP) {
+    return {
+      cards: [newCard, ...cards]
+    }
+  }
+
+  if (position === SHUFFLE_POSITIONS.BOTTOM) {
+    return {
+      cards: [...cards, newCard]
+    }
+  }
+
+  const { cards: newDeck } = addToMiddle({
+    newCard,
+    cards
+  })
+
+  return {
+    cards: newDeck
+  }
 }
 
 const deal = ({ cards }) => {
@@ -86,6 +122,7 @@ module.exports = {
   shuffle,
   deal,
   shuffleOn,
+  addToMiddle,
   DECK_DEFINITION,
   SHUFFLE_POSITIONS
 }
