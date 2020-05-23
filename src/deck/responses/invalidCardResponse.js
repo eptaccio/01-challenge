@@ -2,7 +2,7 @@ const { errorResponse } = require('./errorResponse')
 
 const invalidCardResponse = message => {
   return errorResponse({
-    message: message || 'invalid card to shuffle'
+    message: message || 'invalid `suit` or `value`'
   })
 }
 
