@@ -1,0 +1,25 @@
+{
+  "version": 2,
+  "alias": [
+    "01-deck.now.sh"
+  ],
+  "public": true,
+  "builds": [
+    {
+      "src": "index.js",
+      "use": "@now/node-server",
+      "config": {}
+    }
+  ],
+  "routes": [
+    {
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+      },
+      "src": "/.*",
+      "dest": "/server.js"
+    }
+  ]
+}
