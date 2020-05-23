@@ -5,7 +5,9 @@ const {
   deckResponse,
   errorResponse,
   invalidDeckIdResponse,
-  deckNotFoundResponse
+  deckNotFoundResponse,
+  emptyDeckResponse,
+  dealQuantityNotAvailableResponse
 } = require('../responses')
 
 const logger = loggerBuilder(__filename)
@@ -22,6 +24,16 @@ const dealController = async (req, res) => {
 
     if (!deck) {
       return res.status(404).send(deckNotFoundResponse(deckId))
+    }
+
+    const emptyDeck = deck.length === 0
+    if (emptyDeck) {
+      return res.status(400).send(emptyDeckResponse(deckId))
+    }
+
+    const dealQuantityNotAvailable = quantity > deck.cards.length
+    if (dealQuantityNotAvailable) {
+      return res.status(400).send(dealQuantityNotAvailableResponse())
     }
 
     const { selectedCards, cards } = deal({
