@@ -4,7 +4,7 @@ const {
   isValidCard,
   isValidShufflePosition,
   isCardAvailable
-} = require('../../utils')
+} = require('../../validators')
 
 const {
   updateDeck,
