@@ -49,6 +49,10 @@ const shuffleOnDeckController = async (req, res) => {
       return res.status(400).send(invalidCardResponse())
     }
 
+    if (!isCardAvailable(card, deck.usedCards)) {
+      return res.status(400).send(cardNotAvailableResponse())
+    }
+
     if (position && !isValidShufflePosition(position)) {
       return res.status(400).send(invalidShufflePosition())
     }
