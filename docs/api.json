@@ -1,0 +1,313 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "01 api",
+    "description": "01 DECK API"
+  },
+  "host": "localhost:3001",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/status": {
+      "get": {
+        "description": "health check",
+        "responses": {
+          "200": {
+            "description": "status.",
+            "schema": {
+              "type": "string",
+              "description": "ok"
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "post": {
+        "summary": "Criação de novo deck",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "Parametros para criação de decks",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "quantity": {
+                  "type": "number",
+                  "default": 1
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Uma lista de decks",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DeckResponse"
+              }
+            }
+          },
+          "500": {
+            "description": "Erro não esperado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/deal": {
+      "put": {
+        "summary": "Compra de novas cartas",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "Parametros para criação de decks",
+            "schema": {
+              "type": "object",
+              "required": [
+                "deckId"
+              ],
+              "properties": {
+                "quantity": {
+                  "type": "number",
+                  "default": 1
+                },
+                "deckId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deck atualizado",
+            "schema": {
+              "$ref": "#/definitions/DeckResponse"
+            }
+          },
+          "400": {
+            "description": "Erro de validação",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Deck não encontrado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Erro não esperado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/shuffle": {
+      "put": {
+        "summary": "Embaralhar deck",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "Parametros para criação de decks",
+            "schema": {
+              "type": "object",
+              "required": [
+                "deckId"
+              ],
+              "properties": {
+                "deckId": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deck atualizado",
+            "schema": {
+              "$ref": "#/definitions/DeckResponse"
+            }
+          },
+          "400": {
+            "description": "Erro de validação",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Deck não encontrado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Erro não esperado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/shuffle/on/deck": {
+      "put": {
+        "summary": "Devolver card pro baralho",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "description": "Parametros para criação de decks",
+            "schema": {
+              "type": "object",
+              "required": [
+                "deckId"
+              ],
+              "properties": {
+                "deckId": {
+                  "type": "string"
+                },
+                "card": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "string",
+                      "enum": [
+                        "A",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "10",
+                        "J",
+                        "Q",
+                        "K"
+                      ]
+                    },
+                    "suit": {
+                      "type": "string",
+                      "enum": [
+                        "SPADES",
+                        "DIAMONDS",
+                        "CLUBS",
+                        "HEARTS"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deck atualizado",
+            "schema": {
+              "$ref": "#/definitions/DeckResponse"
+            }
+          },
+          "400": {
+            "description": "Erro de validação",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "Deck não encontrado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "500": {
+            "description": "Erro não esperado",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Card": {
+      "type": "object",
+      "properties": {
+        "suit": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "nessage": {
+          "type": "string"
+        }
+      }
+    },
+    "DeckResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "counters": {
+          "type": "object",
+          "properties": {
+            "availableCards": {
+              "type": "number"
+            },
+            "usedCards": {
+              "type": "number"
+            }
+          }
+        },
+        "usedCards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Card"
+          }
+        },
+        "cards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Card"
+          }
+        }
+      }
+    }
+  }
+}
