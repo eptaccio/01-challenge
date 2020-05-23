@@ -1,10 +1,13 @@
 const deckResponse = ({ cards, _id, selectedCards, usedCards }) => {
   return {
-    cards,
     id: _id,
-    size: cards.length,
+    counters: {
+      availableCards: cards.length,
+      usedCards: usedCards.length
+    },
     selectedCards,
-    usedCards
+    usedCards,
+    cards
   }
 }
 
