@@ -10,6 +10,7 @@
     "http",
     "https"
   ],
+  "basePath": "/deck",
   "paths": {
     "/status": {
       "get": {
