@@ -7,8 +7,8 @@
   },
   "host": "01.eptaccio1.now.sh",
   "schemes": [
+    "https",
     "http",
-    "https"
   ],
   "basePath": "/deck",
   "paths": {
