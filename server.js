@@ -1,5 +1,6 @@
 const { config } = require('./config')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const express = require('express')
 
 const db = require('./src/db')
@@ -11,6 +12,7 @@ db.connect()
 const app = express()
 
 app.use(bodyParser.json())
+app.use(cors())
 
 app.use('/deck', deckRoutes)
 
