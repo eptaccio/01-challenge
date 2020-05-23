@@ -1,8 +1,8 @@
 const { errorResponse } = require('./errorResponse')
 
-const invalidCardResponse = deckId => {
+const invalidCardResponse = message => {
   return errorResponse({
-    message: 'invalid card to shuffle'
+    message: message || 'invalid card to shuffle'
   })
 }
 
