@@ -5,6 +5,7 @@ const { findDeck } = require('./findDeck')
 const { getRandomCard } = require('./getRandomCard')
 const { saveDeck } = require('./saveDeck')
 const { updateDeck } = require('./updateDeck')
+const { removeCardFromUsedCards } = require('./removeCardFromUsedCards')
 
 const {
   shuffle, shuffleOn,
@@ -21,6 +22,7 @@ module.exports = {
   findDeck,
   saveDeck,
   updateDeck,
+  removeCardFromUsedCards,
   DECK_DEFINITION,
   SHUFFLE_POSITIONS
 }
