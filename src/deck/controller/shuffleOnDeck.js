@@ -1,10 +1,13 @@
 const {
-  loggerBuilder,
   isValidDeckId,
   isValidCard,
   isValidShufflePosition,
   isCardAvailable
 } = require('../../validators')
+
+const {
+  loggerBuilder
+} = require('../../utils')
 
 const {
   updateDeck,

@@ -1,5 +1,6 @@
 const { shuffle, updateDeck, findDeck } = require('../deck')
-const { loggerBuilder, isValidDeckId } = require('../../validators')
+const { isValidDeckId } = require('../../validators')
+const { loggerBuilder } = require('../../utils')
 
 const {
   deckResponse,
