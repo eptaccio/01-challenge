@@ -31,15 +31,13 @@ const dealController = async (req, res) => {
 
     const newDeck = {
       ...deck.toObject(),
-      cards
+      cards,
+      usedCards: selectedCards
     }
 
     await updateDeck(newDeck)
 
-    const response = deckResponse({
-      ...newDeck,
-      selectedCards
-    })
+    const response = deckResponse(newDeck)
 
     res.send(response)
   } catch (error) {
