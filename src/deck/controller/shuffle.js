@@ -40,7 +40,7 @@ const shuffleController = async (req, res) => {
     logger.error(error)
 
     res.status(500).send(errorResponse({
-      message: 'unexpected error on deal'
+      message: 'unexpected error on shuffle'
     }))
   }
 }
