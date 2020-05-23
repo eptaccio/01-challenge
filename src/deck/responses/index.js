@@ -1,5 +1,5 @@
 const { deckResponse } = require('./deckResponse')
-const { errorResponse } = require('./erroResponse')
+const { errorResponse } = require('./errorResponse')
 
 module.exports = {
   deckResponse,
