@@ -1,6 +1,12 @@
 const { deal, updateDeck, findDeck } = require('../deck/')
-const { deckResponse, errorResponse, invalidDeckIdResponse } = require('../responses')
 const { loggerBuilder, isValidDeckId } = require('../../utils')
+
+const {
+  deckResponse,
+  errorResponse,
+  invalidDeckIdResponse,
+  deckNotFoundResponse
+} = require('../responses')
 
 const logger = loggerBuilder(__filename)
 
@@ -15,9 +21,7 @@ const dealController = async (req, res) => {
     const deck = await findDeck({ id: deckId })
 
     if (!deck) {
-      res.status(404).send(errorResponse({
-        message: `deck ${deckId} not found`
-      }))
+      res.status(404).send(deckNotFoundResponse(deckId))
     }
 
     const { selectedCards, cards } = deal({
