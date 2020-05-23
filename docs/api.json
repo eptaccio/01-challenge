@@ -12,20 +12,6 @@
   ],
   "basePath": "/deck",
   "paths": {
-    "/status": {
-      "get": {
-        "description": "health check",
-        "responses": {
-          "200": {
-            "description": "status.",
-            "schema": {
-              "type": "string",
-              "description": "ok"
-            }
-          }
-        }
-      }
-    },
     "/": {
       "post": {
         "summary": "Criação de novo deck",
