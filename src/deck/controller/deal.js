@@ -44,7 +44,10 @@ const dealController = async (req, res) => {
     const newDeck = {
       ...deck.toObject(),
       cards,
-      usedCards: selectedCards
+      usedCards: [
+        ...selectedCards,
+        ...deck.usedCards
+      ]
     }
 
     await updateDeck(newDeck)
