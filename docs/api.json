@@ -5,9 +5,10 @@
     "title": "01 api",
     "description": "01 DECK API"
   },
-  "host": "localhost:3001",
+  "host": "01.eptaccio1.now.sh",
   "schemes": [
-    "http"
+    "http",
+    "https"
   ],
   "paths": {
     "/status": {
