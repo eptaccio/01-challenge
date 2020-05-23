@@ -5,6 +5,7 @@ const { deckNotFoundResponse } = require('./deckNotFoundResponse')
 const { invalidCardResponse } = require('./invalidCardResponse')
 const { invalidShufflePosition } = require('./invalidShufflePosition')
 const { emptyDeckResponse } = require('./emptyDeckResponse')
+const { dealQuantityNotAvailableResponse } = require('./dealQuantityNotAvailableResponse')
 
 module.exports = {
   deckResponse,
@@ -13,5 +14,6 @@ module.exports = {
   deckNotFoundResponse,
   invalidCardResponse,
   invalidShufflePosition,
-  emptyDeckResponse
+  emptyDeckResponse,
+  dealQuantityNotAvailableResponse
 }
