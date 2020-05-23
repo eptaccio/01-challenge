@@ -41,7 +41,7 @@ const shuffleOnDeckController = async (req, res) => {
 
     if (!card) {
       return res.status(400).send(invalidCardResponse(
-        '`card` is defined'
+        '`card` is required'
       ))
     }
 
