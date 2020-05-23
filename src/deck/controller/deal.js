@@ -34,10 +34,12 @@ const dealController = async (req, res) => {
 
     await updateDeck(newDeck)
 
-    res.send(deckResponse({
+    const response = deckResponse({
       ...newDeck,
       selectedCards
-    }))
+    })
+
+    res.send(response)
   } catch (error) {
     logger.error(error)
 

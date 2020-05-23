@@ -11,7 +11,8 @@ const create = async (req, res) => {
     const decks = []
 
     for (let index = 0; index < quantity; index++) {
-      decks.push(shuffle(createDeck()))
+      const newDeck = createDeck()
+      decks.push(shuffle(newDeck))
     }
 
     const results = await Promise.all(decks.map(saveDeck))
