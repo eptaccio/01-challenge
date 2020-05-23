@@ -2,14 +2,16 @@ const {
   loggerBuilder,
   isValidDeckId,
   isValidCard,
-  isValidShufflePosition
+  isValidShufflePosition,
+  isCardAvailable
 } = require('../../utils')
 
 const {
   updateDeck,
   findDeck,
   SHUFFLE_POSITIONS,
-  shuffleOn
+  shuffleOn,
+  removeCardFromUsedCards
 } = require('../deck')
 
 const {
@@ -18,7 +20,8 @@ const {
   invalidDeckIdResponse,
   deckNotFoundResponse,
   invalidCardResponse,
-  invalidShufflePosition
+  invalidShufflePosition,
+  cardNotAvailableResponse
 } = require('../responses')
 
 const logger = loggerBuilder(__filename)
@@ -63,9 +66,15 @@ const shuffleOnDeckController = async (req, res) => {
       cards: deck.cards
     })
 
+    const { usedCards } = removeCardFromUsedCards({
+      usedCards: deck.usedCards,
+      card
+    })
+
     const newDeck = {
       ...deck.toObject(),
-      cards
+      cards,
+      usedCards
     }
 
     await updateDeck(newDeck)
