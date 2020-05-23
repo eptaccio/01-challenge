@@ -4,6 +4,9 @@ const currentDeck = {
     { value: '2', suit: 'DIAMONDS' },
     { value: '3', suit: 'CLUBS' },
     { value: '4', suit: 'HEARTS' }
+  ],
+  usedCards: [
+    { value: 'A', suit: 'CLUBS' }
   ]
 }
 
