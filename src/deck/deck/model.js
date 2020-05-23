@@ -6,6 +6,10 @@ const DeckSchema = Schema({
   cards: {
     type: [],
     required: true
+  },
+  usedCards: {
+    type: [],
+    default: []
   }
 })
 
