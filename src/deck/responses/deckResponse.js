@@ -1,9 +1,10 @@
-const deckResponse = ({ cards, _id, selectedCards }) => {
+const deckResponse = ({ cards, _id, selectedCards, usedCards }) => {
   return {
     cards,
     id: _id,
     size: cards.length,
-    selectedCards
+    selectedCards,
+    usedCards
   }
 }
 
