@@ -7,8 +7,8 @@
   },
   "host": "01.eptaccio1.now.sh",
   "schemes": [
-    "https",
     "http",
+    "https"
   ],
   "basePath": "/deck",
   "paths": {
@@ -180,6 +180,14 @@
               "properties": {
                 "deckId": {
                   "type": "string"
+                },
+                "position": {
+                  "type": "string",
+                  "enum": [
+                    "TOP",
+                    "MIDDLE",
+                    "BOTTOM"
+                  ]
                 },
                 "card": {
                   "type": "object",
