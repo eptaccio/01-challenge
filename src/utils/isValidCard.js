@@ -1,6 +1,10 @@
 const { DECK_DEFINITION } = require('../deck/deck/createDeck')
 
 const isValidCard = card => {
+  if (!card) {
+    return false
+  }
+
   const cardSuit = card.suit && card.suit.toUpperCase()
   const cardValue = card.value && card.value.toUpperCase()
 
