@@ -5,6 +5,11 @@ Rodar o projeto:
 docker-compose up -d
 ```
 
+Intalação de dependências:
+```shel
+npm install
+```
+
 Testes:
 ```shel
 npm run test
