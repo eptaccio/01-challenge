@@ -27,7 +27,7 @@ A API deverá conter testes automatizados para o que for necessário
 Disponibilizar o código em um repositório no Github
 É permitido adicionar bibliotecas terceiras no projeto
 
-# Soluço
+# Solução
 
 Rodar o projeto:
 ```shel
